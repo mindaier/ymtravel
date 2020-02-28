@@ -7,7 +7,9 @@
       <div class="header-title">{{this.sightName}}</div>
     </div>
     <div class="header-icon" v-show="!showHeader">
-      <span class="iconfont back-icon">&#xe6bc;</span>
+      <router-link to="/">
+        <span class="iconfont back-icon">&#xe6bc;</span>
+      </router-link>
     </div>
   </div>
 </template>

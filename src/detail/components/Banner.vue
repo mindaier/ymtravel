@@ -1,5 +1,5 @@
 <template>
-  <div class="banner">
+  <div class="banner" @click="handleBannerClick">
     <div class="item">
       <img class="item-img" :src="bannerImg" />
     </div>
@@ -19,6 +19,11 @@ export default {
   props: {
     bannerImg: String,
     sightName: String
+  },
+  methods: {
+    handleBannerClick () {
+      this.$emit('change')
+    }
   }
 }
 </script>

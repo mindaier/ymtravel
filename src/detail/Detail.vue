@@ -3,7 +3,13 @@
     <detail-header
       :sightName="sightName"
     ></detail-header>
-    <detail-banner :bannerImg="bannerImg" :sightName="sightName"></detail-banner>
+    <detail-banner
+      :bannerImg="bannerImg"
+      :sightName="sightName"
+      @change="handleChange"
+    ></detail-banner>
+    <common-gallery :gallaryImgs="gallaryImgs" :showHide="toggle"></common-gallery>
+    <detail-list :categoryList="categoryList"></detail-list>
     <div class="aside"></div>
   </div>
 </template>
@@ -12,18 +18,24 @@
 import axios from 'axios'
 import DetailHeader from './components/Header'
 import DetailBanner from './components/Banner'
+import CommonGallery from 'common/Gallery'
+import DetailList from './components/List'
+
 export default {
   name: 'Detail',
   components: {
     DetailHeader,
-    DetailBanner
+    DetailBanner,
+    CommonGallery,
+    DetailList
   },
   data () {
     return {
       sightName: '',
       bannerImg: '',
       gallaryImgs: [],
-      categoryList: []
+      categoryList: [],
+      toggle: false
     }
   },
   methods: {
@@ -33,12 +45,17 @@ export default {
     },
     getDetailInfoSucc (res) {
       res = res.data
-      console.log(res)
+      // console.log(res)
       if (res.ret && res.data) {
         const data = res.data
         this.sightName = data.sightName
         this.bannerImg = data.bannerImg
+        this.gallaryImgs = data.gallaryImgs
+        this.categoryList = data.categoryList
       }
+    },
+    handleChange () {
+      this.toggle = !this.toggle
     }
   },
   mounted () {
