@@ -17,7 +17,7 @@ export default {
   props: {
     iconList: Array
   },
-  data() {
+  data () {
     return {
       swiperOptions: {
         autoplay: false
@@ -34,7 +34,6 @@ export default {
         }
         pages[page].push(item)
       })
-      //console.log(pages)
       return pages
     }
   }
@@ -43,8 +42,8 @@ export default {
 
 <style lang="stylus" scoped>
   .items
-    height 0
-    padding-bottom 50%
+    width 100%
+    height 50%
     padding .2rem .1rem
     .item
       position relative

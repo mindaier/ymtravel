@@ -3,6 +3,10 @@
     <home-header :city="city"></home-header>
     <home-banner :swiperList="swiperList"></home-banner>
     <home-icons :iconList="iconList"></home-icons>
+    <home-recommend
+      :recommendList="recommendList"
+      :weekendList="weekendList"
+    ></home-recommend>
   </div>
 </template>
 
@@ -11,13 +15,15 @@ import axios from 'axios'
 import HomeHeader from './components/Header'
 import HomeBanner from './components/Banner'
 import HomeIcons from './components/Icons'
+import HomeRecommend from './components/Recommend'
 
 export default {
   name: 'Home',
   components: {
     HomeHeader,
     HomeBanner,
-    HomeIcons
+    HomeIcons,
+    HomeRecommend
   },
   data () {
     return {
