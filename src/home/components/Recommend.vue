@@ -13,7 +13,9 @@
           <div class="content">
             <p class="content-name">{{item.title}}</p>
             <p class="content-desc">{{item.desc}}</p>
-            <button class="item-button">查看详情</button>
+            <router-link to="/detail">
+              <button class="item-button">查看详情</button>
+            </router-link>
           </div>
         </li>
       </ul>
