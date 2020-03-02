@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" @click="closeGallery" v-if="toggle">
-    <div class="container" v-if="showSwiper">
+    <div class="container">
       <swiper :options="swiperOption">
         <swiper-slide v-for="item of gallaryImgs" :key="item.index">
           <img class="item-img" :src="item">
@@ -28,11 +28,11 @@ export default {
       toggle: false
     }
   },
-  computed: {
-    showSwiper () {
-      return this.gallaryImgs.length > 0 ? 1 : 0
-    }
-  },
+  // computed: {
+  //   showSwiper () {
+  //     return this.gallaryImgs.length > 0 ? 1 : 0
+  //   }
+  // },
   methods: {
     closeGallery () {
       this.toggle = false

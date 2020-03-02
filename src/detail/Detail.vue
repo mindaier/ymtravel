@@ -8,7 +8,9 @@
       :sightName="sightName"
       @change="handleChange"
     ></detail-banner>
-    <common-gallery :gallaryImgs="gallaryImgs" :showHide="toggle"></common-gallery>
+    <fade-animation>
+      <common-gallery :gallaryImgs="gallaryImgs" :showHide="toggle"></common-gallery>
+    </fade-animation>
     <detail-list :categoryList="categoryList"></detail-list>
     <div class="aside"></div>
   </div>
@@ -20,6 +22,7 @@ import DetailHeader from './components/Header'
 import DetailBanner from './components/Banner'
 import CommonGallery from 'common/Gallery'
 import DetailList from './components/List'
+import FadeAnimation from 'common/fade/Fade'
 
 export default {
   name: 'Detail',
@@ -27,7 +30,8 @@ export default {
     DetailHeader,
     DetailBanner,
     CommonGallery,
-    DetailList
+    DetailList,
+    FadeAnimation
   },
   data () {
     return {
@@ -40,7 +44,11 @@ export default {
   },
   methods: {
     getDetailInfo () {
-      axios.get('/api/detail.json')
+      axios.get('/api/detail.json', {
+        params: {
+          id: this.$route.params.id
+        }
+      })
         .then(this.getDetailInfoSucc)
     },
     getDetailInfoSucc (res) {

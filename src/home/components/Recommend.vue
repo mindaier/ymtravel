@@ -3,7 +3,7 @@
     <div class="area" >
       <p class="title">热销推荐</p>
       <ul class="hot" >
-        <li class="hot-item"
+        <router-link tag="li" :to="'/detail/' + item.id" class="hot-item"
           v-for="item of recommendList"
           :key="item.id"
         >
@@ -13,11 +13,9 @@
           <div class="content">
             <p class="content-name">{{item.title}}</p>
             <p class="content-desc">{{item.desc}}</p>
-            <router-link to="/detail">
-              <button class="item-button">查看详情</button>
-            </router-link>
+            <button class="item-button">查看详情</button>
           </div>
-        </li>
+        </router-link>
       </ul>
     </div>
     <div class="area">
@@ -46,6 +44,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import '~styles/mixins.styl'
   .title
     height .88rem
     line-height .88rem
@@ -64,24 +63,25 @@ export default {
           width 100%
       .content
         flex 1
+        min-width 0 // 解决ellipsis的冲突
         padding-left .1rem
         margin-top .1rem
         line-height .60rem
         .content-name
           height .60rem
-          font-size .38rem
-        .content-desc
           font-size .32rem
+          color #555
+        .content-desc
+          font-size .28rem
           color #777
+          ellipsis()
         .item-button
           margin-top .14rem
-          width 1.7rem
-          height .5rem
-          line-height .5rem
+          padding .02rem .2rem
           border-radius .06rem
           background rgb(255, 131, 0)
           color #fff
-          font-size .32rem
+          font-size .28rem
           text-align center
   .weekend-item
     .item-img

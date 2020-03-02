@@ -1,12 +1,19 @@
 <template>
-  <div class="city">
-    <city-header></city-header>
-    <city-search :hotCities="hotCities"></city-search>
-    <city-list
-      :city="city"
-      :hotCities="hotCities"
-      :cities="cities"
-    ></city-list>
+  <div class="city" ref="wrapper">
+    <div>
+      <city-header></city-header>
+      <city-search :cities="cities"></city-search>
+      <city-list
+        :city="city"
+        :hotCities="hotCities"
+        :cities="cities"
+        :alphabet="alphabet"
+      ></city-list>
+      <city-alphabet
+        :cities="cities"
+        @change="changeAlphabet"
+      ></city-alphabet>
+    </div>
   </div>
 </template>
 
@@ -14,19 +21,22 @@
 import CityHeader from './components/Header'
 import CitySearch from './components/Search'
 import CityList from './components/List'
+import CityAlphabet from './components/Alphabet'
 import axios from 'axios'
 export default {
   name: 'City',
   components: {
     CityHeader,
     CitySearch,
-    CityList
+    CityList,
+    CityAlphabet
   },
   data () {
     return {
       city: [],
       hotCities: [],
-      cities: {}
+      cities: {},
+      alphabet: ''
     }
   },
   methods: {
@@ -44,6 +54,10 @@ export default {
         // console.log(hotCities)
         this.cities = data.cities
       }
+    },
+    changeAlphabet (letter) {
+      this.alphabet = letter
+      // console.log(this.alphabet)
     }
   },
   mounted () {

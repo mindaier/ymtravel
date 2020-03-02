@@ -89,9 +89,9 @@ export default {
     border-radius 50%
     background rgba(0,0,0,.6)
     text-align center
-    color #fff
     padding-right .01rem
     .back-icon
       font-size .44rem
+      color #fff
 
 </style>

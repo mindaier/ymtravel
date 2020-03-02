@@ -8,17 +8,18 @@
       输入城市/景点/游玩主题
     </div>
     <router-link to="/city" tag="div" class="header-right">
-      {{city}}
+      {{this.city}}
       <span class="iconfont">&#xe6aa;</span>
     </router-link>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>
@@ -54,6 +55,7 @@ export default {
         position relative
         top .03rem
     .header-right
-      min-width 1.3rem
+      min-width 1.2rem
+      padding 0 .06rem
       text-align center
 </style>
